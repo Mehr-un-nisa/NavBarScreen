@@ -169,6 +169,36 @@ class _MyHomePageState extends State<MyHomePage> {
                 }).toList(),
               ),
             ),
+            SizedBox(height: 15),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Transaction Types',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 14),
+            ToggleButtons(
+              borderRadius: BorderRadius.circular(32.0),
+              fillColor: Colors.purple,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Text(
+                    'Money in',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Text(
+                    'Money out',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+              onPressed: (i) {},
+              isSelected: [false, true],
+            ),
           ],
         ),
       ),
