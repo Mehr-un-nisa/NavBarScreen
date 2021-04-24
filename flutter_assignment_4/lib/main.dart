@@ -46,6 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
     'Overhead': false,
   };
 
+  Map<String, bool> items2 = {
+    'Consultant Notes only': false,
+    'Overdue only': false,
+    'Data Range': false,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           TextButton(
             child: Text(
               'CLEAR',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             onPressed: () {},
           ),
@@ -68,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           TextButton(
             child: Text(
               'APPLY',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
             onPressed: () {},
           ),
@@ -169,35 +175,58 @@ class _MyHomePageState extends State<MyHomePage> {
                 }).toList(),
               ),
             ),
-            SizedBox(height: 15),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Transaction Types',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            SizedBox(height: 18),
+            Expanded(
+              child: ListView(
+                children: [
+                  ToggleButtons(
+                    borderRadius: BorderRadius.circular(46.0),
+                    fillColor: Colors.purple,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          'Good 👌',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          'Ok 👍',
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          'Bad 👎',
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                      ),
+                    ],
+                    onPressed: (i) {},
+                    isSelected: [true, false, false],
+                  ),
+                ].toList(),
               ),
             ),
-            SizedBox(height: 14),
-            ToggleButtons(
-              borderRadius: BorderRadius.circular(32.0),
-              fillColor: Colors.purple,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Text(
-                    'Money in',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Text(
-                    'Money out',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-              onPressed: (i) {},
-              isSelected: [false, true],
+            Expanded(
+              child: ListView(
+                children: items2.keys.map((String key) {
+                  return new CheckboxListTile(
+                    title: new Text(key),
+                    value: items2[key],
+                    activeColor: Colors.purple,
+                    checkColor: Colors.white,
+                    onChanged: (bool value) {
+                      setState(() {
+                        items2[key] = value;
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
             ),
           ],
         ),
