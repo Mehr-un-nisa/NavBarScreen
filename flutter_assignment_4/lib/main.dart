@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(12.0),
-        child: Column(
+        child: ListView(
           children: [
             Align(
               alignment: Alignment.centerLeft,
@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 3),
             Expanded(
-              child: ListView(
+              child: Column(
                 children: items.keys.map((String key) {
                   return new CheckboxListTile(
                     title: new Text(key),
@@ -175,33 +175,45 @@ class _MyHomePageState extends State<MyHomePage> {
                 }).toList(),
               ),
             ),
+            Divider(
+              thickness: 1,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Text('Transaction Health',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                )),
             SizedBox(height: 18),
             Expanded(
-              child: ListView(
+              child: Column(
                 children: [
                   ToggleButtons(
-                    borderRadius: BorderRadius.circular(46.0),
+                    borderRadius: BorderRadius.circular(20.0),
                     fillColor: Colors.purple,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Text(
-                          'Good 👌',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          'Good ',
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Text(
-                          'Ok 👍',
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          'Ok ',
+                          style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Text(
-                          'Bad 👎',
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          'Bad ',
+                          style: TextStyle(color: Colors.black, fontSize: 14),
                         ),
                       ),
                     ],
@@ -211,8 +223,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ].toList(),
               ),
             ),
+            SizedBox(height: 18),
             Expanded(
-              child: ListView(
+              child: Column(
                 children: items2.keys.map((String key) {
                   return new CheckboxListTile(
                     title: new Text(key),
